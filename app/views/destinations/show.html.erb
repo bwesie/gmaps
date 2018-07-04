@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<div style="margin-left: 10px;">
+
+<p>
+  <strong>City:</strong>
+  <%= @destination.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @destination.country %>
+</p>
+
+<p>Lat: <%= @destination.latitude %>, Long: <%= @destination.longitude %></p>
+
+<%= link_to 'Edit', edit_destination_path(@destination), class: "btn btn-warning btn-sm" %> |
+<%= link_to 'Back', destinations_path, class: "btn btn-info btn-sm" %>
+
+</div><br>
+
+<%= javascript_tag do %>
+   var latitude = '<%= j @destination.latitude.to_s %>';
+   var longitude = '<%= j @destination.longitude.to_s %>';
+   var address = '<%= j @destination.city %>';
+<% end %>
+
+<div id="destination-map"></div>
